@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import authRoutes from "./modules/auth/routes/auth.routes";
+import requestRoutes from "./modules/requests/routes/request.routes";
+
 import { errorHandler, notFoundHandler } from "./middleware/error.middleware";
 
 const app = express();
@@ -50,6 +52,7 @@ app.get("/", (_req, res) => {
 });
 
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/requests", requestRoutes);
 
 // Error handling
 app.use(notFoundHandler);
